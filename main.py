@@ -23,7 +23,7 @@ import base64
 
 
 
-hook = ""
+hook = ''
 DETECTED = False
 
 
